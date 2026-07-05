@@ -42,3 +42,5 @@ next-env.d.ts
 
 # real candidate seed data (committee-provided, keep only the .example.json in git)
 /data/candidates.seed.json
+
+.vercel
