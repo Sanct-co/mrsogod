@@ -182,7 +182,7 @@ export function VoteCta({
           type="button"
           onClick={() => handleVote("google")}
           disabled={pending}
-          className="chamfer-btn bg-gradient-to-b from-gold-start via-gold-mid to-gold-deep px-6 py-3 text-sm font-extrabold uppercase tracking-[0.2em] text-maroon-deep disabled:opacity-60"
+          className="chamfer-btn w-full cursor-pointer bg-gradient-to-b from-gold-start via-gold-mid to-gold-deep px-6 py-3 text-center text-sm font-extrabold uppercase tracking-[0.2em] text-maroon-deep disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {pending
             ? "Working…"

@@ -70,7 +70,7 @@ export default async function CandidatePage({
             {candidate.bio}
           </RevealText>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-col gap-4 sm:gap-5">
             <VoteCta
               candidateId={candidate.id}
               candidateName={candidate.name}

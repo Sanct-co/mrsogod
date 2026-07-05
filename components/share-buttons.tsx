@@ -3,6 +3,33 @@
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap-plugins";
+import toast from "react-hot-toast";
+
+function ShareIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a3 3 0 0 0 0-1.4l7.05-4.11a3 3 0 1 0-.97-1.71l-7.05 4.11a3 3 0 1 0 0 4.82l7.05 4.13a3 3 0 1 0 .97-1.86Z" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+      <path d="M13.5 21v-7.6h2.55l.38-2.96h-2.93V8.53c0-.86.24-1.44 1.47-1.44h1.57V4.46A20.9 20.9 0 0 0 14.24 4c-2.24 0-3.77 1.37-3.77 3.87v2.57H7.9v2.96h2.57V21h3.03Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+      <circle cx="12" cy="12" r="3.7" />
+      <circle cx="16.85" cy="7.15" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 export function ShareButtons({ title }: { title: string }) {
   const [copied, setCopied] = useState(false);
@@ -47,41 +74,56 @@ export function ShareButtons({ title }: { title: string }) {
     setTimeout(() => setCopied(false), 2000);
   }
 
-  function openIntent(e: React.MouseEvent<HTMLButtonElement>, builder: (url: string) => string) {
+  function handleFacebook(e: React.MouseEvent<HTMLButtonElement>) {
     pop(e.currentTarget);
-    window.open(builder(window.location.href), "_blank", "noopener,noreferrer");
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      window.location.href
+    )}`;
+    window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=600");
+  }
+
+  async function handleInstagram(e: React.MouseEvent<HTMLButtonElement>) {
+    pop(e.currentTarget);
+    // Instagram has no web share-intent URL, so copy the link and hand off to the app.
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast.success("Link copied! Paste it into your Instagram story or bio.");
+    } catch {
+      toast.error("Couldn't copy the link. Please copy it manually.");
+    }
+    window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
   }
 
   return (
-    <div ref={rootRef} className="flex flex-wrap items-center gap-4">
+    <div
+      ref={rootRef}
+      className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+    >
       <button
         type="button"
         onClick={handleShare}
-        className="share-btn chamfer-btn border border-gold-mid px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-gold-solid transition-colors hover:bg-gold-mid/10"
+        className="share-btn chamfer-btn inline-flex h-11 w-full shrink-0 cursor-pointer items-center justify-center gap-2 shadow-[inset_0_0_0_1px_var(--color-gold-mid)] px-4 text-xs font-bold uppercase leading-none tracking-[0.2em] text-gold-solid transition-colors hover:bg-gold-mid/10 active:bg-gold-mid/20 sm:w-auto sm:justify-start"
       >
+        <ShareIcon />
         {copied ? "Link Copied" : "Share"}
       </button>
       <button
         type="button"
-        onClick={(e) =>
-          openIntent(e, (url) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
-        }
-        className="share-btn text-xs font-bold uppercase tracking-[0.2em] text-gold-mid transition-colors hover:text-gold-solid"
+        onClick={handleFacebook}
+        aria-label="Share on Facebook"
+        className="share-btn inline-flex h-11 w-full shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full border border-gold-mid/40 px-4 text-xs font-bold uppercase leading-none tracking-[0.2em] text-gold-mid transition-colors hover:border-gold-mid hover:bg-gold-mid/10 hover:text-gold-solid active:bg-gold-mid/20 sm:w-auto sm:justify-start"
       >
+        <FacebookIcon />
         Facebook
       </button>
       <button
         type="button"
-        onClick={(e) =>
-          openIntent(
-            e,
-            (url) =>
-              `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`
-          )
-        }
-        className="share-btn text-xs font-bold uppercase tracking-[0.2em] text-gold-mid transition-colors hover:text-gold-solid"
+        onClick={handleInstagram}
+        aria-label="Share on Instagram"
+        className="share-btn inline-flex h-11 w-full shrink-0 cursor-pointer items-center justify-center gap-2 rounded-full border border-gold-mid/40 px-4 text-xs font-bold uppercase leading-none tracking-[0.2em] text-gold-mid transition-colors hover:border-gold-mid hover:bg-gold-mid/10 hover:text-gold-solid active:bg-gold-mid/20 sm:w-auto sm:justify-start"
       >
-        Twitter/X
+        <InstagramIcon />
+        Instagram
       </button>
     </div>
   );
