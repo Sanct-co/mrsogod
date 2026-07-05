@@ -1,0 +1,181 @@
+{
+    "$schema": "design-system-v1",
+    "name": "Regal Pageant / Royal Gala",
+    "inspiredBy": "Mister Sogod 2026 — Official Candidates announcement graphic",
+    "summary": "A luxe, high-drama pageant/awards aesthetic built on deep crimson-maroon backgrounds, faceted metallic-gold geometry, and bold gold typography. It reads as royal, ceremonial, and competitive — the visual language of crowns, sashes, and stage lights rather than a soft consumer app. Every component should feel like it belongs on a velvet stage under a spotlight.",
+  
+    "designPrinciples": [
+      {
+        "principle": "Ceremonial gravity",
+        "description": "Every screen should feel like an official proclamation or award announcement — centered, symmetrical, formal. Avoid casual, playful, or rounded-friendly UI patterns."
+      },
+      {
+        "principle": "Metal against velvet",
+        "description": "The core visual tension is polished gold (light, precious, sharp) sitting on top of deep matte crimson (heavy, rich, shadowed). Maintain strong contrast between the 'metal' layer (text, borders, icons) and the 'velvet' layer (backgrounds, panels)."
+      },
+      {
+        "principle": "Faceted geometry, not soft shapes",
+        "description": "Backgrounds and dividers use angular, diamond-cut / gem-faceted polygon shapes with sharp diagonal edges — never soft blobs, circles, or rounded blur shapes. Corners are cut at 30-45° angles, echoing a cut gemstone or ribbon sash."
+      },
+      {
+        "principle": "Symmetry & center-anchored hierarchy",
+        "description": "Primary layouts are vertically centered and mirror left-to-right. Crown/emblem → Title → Subtitle → Divider rule → Content, all sharing a central vertical axis."
+      },
+      {
+        "principle": "Restraint in palette, richness in texture",
+        "description": "Only 2-3 hues are used (deep red, gold, near-black), but each is rendered with gradient depth, subtle glow, and metallic sheen rather than flat fill — richness comes from tonal variation, not from adding more colors."
+      },
+      {
+        "principle": "Legibility above ornamentation",
+        "description": "Despite the decorative frame and background, all functional text (lists, labels, data) sits on the plainest part of the background and uses a clean, bold, high-contrast gold-on-maroon or white-on-maroon treatment so it stays readable at a glance."
+      }
+    ],
+  
+    "colorPalette": {
+      "description": "A two-metal, one-velvet system: gold is the 'precious metal' accent color, deep red/maroon is the 'velvet' base, and near-black/dark-red is used for depth and shadow.",
+      "primary": {
+        "goldGradientStart": "#F7E29B",
+        "goldGradientMid": "#D4AF37",
+        "goldGradientDeep": "#9A6A1E",
+        "goldSolid": "#E8B923",
+        "usage": "Headlines, crown/emblem, dividers, borders, all list/label text, decorative rule lines. Rendered as a top-to-bottom gradient (pale champagne highlight → rich gold → bronze shadow) to simulate embossed metal."
+      },
+      "background": {
+        "maroonDeep": "#3D0A10",
+        "maroonCore": "#5C0F16",
+        "maroonBright": "#7A1219",
+        "blackRed": "#220509",
+        "usage": "Base canvas gradient, radiating from a slightly brighter maroon center-top toward near-black corners, giving a stage-spotlight vignette feel."
+      },
+      "neutrals": {
+        "white": "#FFFFFF",
+        "offWhiteFaint": "rgba(255,255,255,0.08)",
+        "usage": "Reserved for rare high-emphasis callouts and the faint translucent watermark photography layer only — not for body UI chrome."
+      },
+      "contrastRules": [
+        "Gold text always sits directly on maroon/dark-red — never on light backgrounds.",
+        "Maintain at least 4.5:1 luminance contrast between gold text and its maroon background by keeping gold light-toned (#D4AF37 or lighter) and background dark-toned (#5C0F16 or darker).",
+        "Never place gold text on gold shapes, or maroon text on maroon shapes — one metal, one velvet per surface."
+      ]
+    },
+  
+    "typography": {
+      "voice": "Bold, condensed, all-uppercase, competition-poster typography — think championship belts, military insignia, and pageant sashes.",
+      "typefaceStyle": {
+        "display": "Heavy weight, slightly condensed geometric sans-serif (e.g. Montserrat ExtraBold, Poppins Black, or a custom condensed display face) for the main title (\"MISTER SOGOD\").",
+        "numerals": "Bold slab/geometric numerals for year or numbers, same family as display.",
+        "body": "Bold sans-serif, all caps, generous letter-spacing for list items and labels (e.g. Montserrat Bold / Inter Bold at 600-800 weight)."
+      },
+      "hierarchy": [
+        {
+          "level": "Emblem/Crown",
+          "role": "Top-most decorative mark, not text but sets the visual anchor above the title."
+        },
+          {
+          "level": "Eyebrow label",
+          "role": "Small bold caps word above the main title (e.g. 'MISTER'), tightly tracked, gold gradient, ~14-18px equivalent."
+        },
+        {
+          "level": "H1 / Main Title",
+          "role": "Largest element on screen, extreme bold weight, all caps, tight leading, gold gradient with subtle emboss/shadow. e.g. 'SOGOD 2026'."
+        },
+        {
+          "level": "Subtitle / Section label",
+          "role": "Uppercase, wide letter-spacing (0.2-0.35em), flanked by thin horizontal rule lines on both sides, medium-small size, gold. e.g. 'OFFICIAL CANDIDATES'."
+        },
+        {
+          "level": "List label (bold)",
+          "role": "Left column entries — short, all caps, bold, gold, used for category/location names."
+        },
+        {
+          "level": "List value",
+          "role": "Right column entries — all caps, bold, gold, same visual weight as list label to imply equal importance (names paired with places)."
+        }
+      ],
+      "textTreatment": {
+        "case": "UPPERCASE almost everywhere — no sentence case or lowercase body copy.",
+        "letterSpacing": "Generous tracking on labels/subtitles (0.15-0.35em); tighter tracking on large display titles.",
+        "effect": "Gold text rendered with a subtle vertical gradient + soft dark drop shadow to simulate engraved/embossed metal lettering, not flat fill."
+      }
+    },
+  
+    "layoutAndStructure": {
+      "canvas": "Square or near-square aspect ratio (1:1 to 4:5), designed as a shareable social/poster card.",
+      "grid": "Single central vertical axis of symmetry. Header block centered; content below organized into a two-column table/list with a vertical divider rule down the middle.",
+      "spacingSystem": {
+        "philosophy": "Generous, even vertical rhythm between list rows; tight spacing within a label/value pair on the same row.",
+        "sectionPadding": "Large uniform outer margin (~6-8% of canvas width) keeping all content inside the decorative gold frame.",
+        "rowSpacing": "Consistent equal gap between each list row (roughly 1.4-1.6x the text line-height).",
+        "columnGap": "Medium gap on either side of the central divider line, enough that the two columns read as clearly separate but related."
+      },
+      "framingDevice": {
+        "border": "A thin gold rule frame set inward from the canvas edge, with corners cut at diagonal angles (not rounded, not square) to match the faceted background shapes.",
+        "cornerTreatment": "Diagonal chamfered corners on the outer border, echoing the angular background ribbons."
+      },
+      "backgroundGeometry": {
+        "style": "Large, angular, faceted polygon shapes (like cut gemstone facets or draped sash ribbons) in varying shades of dark red, layered to create depth without a literal texture.",
+        "placement": "Concentrated in the corners and edges (especially top-right and bottom-left), leaving the vertical center-column clear/plain for text legibility.",
+        "opacity": "Background photographic elements (e.g. group photo of people) appear only as a very low-opacity monochrome watermark layer, never competing with foreground text."
+      },
+      "composition": [
+        "Emblem (crown) — top, centered",
+        "Eyebrow label — centered, under emblem",
+        "Display title (2 lines max) — centered, under eyebrow",
+        "Rule + subtitle + rule — centered, under title",
+        "Two-column list with center divider — fills remaining vertical space",
+        "Decorative angular background shapes anchored at outer edges/corners throughout"
+      ]
+    },
+  
+    "iconographyAndEmblems": {
+      "style": "Minimal line-weight metallic icons — crowns, laurel wreaths, sashes, stars — always rendered in the same gold gradient as the typography, never flat colored icons.",
+      "usage": "Reserved for a single top-of-page emblem plus occasional small dividers (thin horizontal rules, vertical column dividers, small diamond or star bullet marks).",
+      "weight": "Icons should feel like small trophies — a bit ornate, symmetrical, with fine detail lines rather than simplified flat-UI icon style."
+    },
+  
+    "componentGuidelines": {
+      "header": {
+        "structure": "Crown/emblem icon, eyebrow text, large title, decorative rule + subtitle",
+        "alignment": "center",
+        "background": "sits on the darkest/plainest part of the maroon gradient for max legibility"
+      },
+      "sectionDivider": {
+        "style": "Thin horizontal gold line(s) flanking a short uppercase label, widely letter-spaced, centered."
+      },
+      "listOrTable": {
+        "structure": "Two-column layout with a thin vertical gold rule down the center; each row pairs a bold label (left) with a bold value (right)",
+        "rowStyle": "No visible row backgrounds or zebra striping — separation comes purely from spacing and the shared divider line, keeping the look clean and formal",
+        "alignment": "Left column left-aligned; right column left-aligned starting just right of the divider (not centered per-row)"
+      },
+      "card": {
+        "style": "If content needs to be chunked into cards, use a dark maroon panel slightly lighter than the base background, thin gold border with chamfered corners, generous internal padding, no drop shadows (use border/glow instead)."
+      },
+      "buttons": {
+        "primary": "Gold gradient fill, dark maroon uppercase bold text, sharp or slightly chamfered corners (avoid full pill/rounded unless intentionally softened for UI usability), subtle metallic sheen",
+        "secondary": "Transparent/maroon fill with a thin gold outline and gold uppercase text"
+      },
+      "badgesAndTags": {
+        "style": "Small gold-outlined chips with uppercase gold text on transparent/maroon fill — used sparingly for status or category labels, echoing the sash/medal motif"
+      },
+      "backgroundImagery": {
+        "style": "If photography is used, desaturate and tint to monochrome maroon, drop opacity to ~8-15%, and place behind text layers only, never as a full-strength photo backdrop"
+      },
+      "dividerLines": {
+        "style": "Hairline to 2px gold rules, used generously to separate header/subtitle/content sections and as the central column divider in lists"
+      }
+    },
+  
+    "motionAndElevationNotes": {
+      "elevation": "Depth is communicated through gradient and layered geometric shapes, not through drop shadows or blur — keep elevation flat/graphic, almost like foil-stamped print design.",
+      "motionSuggestion": "If animated, favor subtle metallic shimmer/sheen sweeps across gold text or slow parallax of the background facets — nothing bouncy, rounded, or playful; motion should feel ceremonial (e.g. curtain reveal, spotlight sweep, slow fade/rise)."
+    },
+  
+    "doNots": [
+      "Do not use rounded, soft, or organic blob shapes anywhere — all decorative geometry is angular/faceted.",
+      "Do not introduce additional hues beyond gold, maroon/red, and near-black/white without strong justification.",
+      "Do not use lowercase or mixed-case body copy for labels — maintain uppercase formality.",
+      "Do not use flat, un-gradiented gold fills for primary text — always give it tonal depth.",
+      "Do not let background photography or texture reduce text legibility — always keep it as a faint watermark.",
+      "Do not use casual UI patterns (rounded pill buttons everywhere, soft pastel cards, playful icons) — this is a formal, ceremonial system."
+    ]
+  }

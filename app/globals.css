@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --gold-start: #f7e29b;
+  --gold-mid: #d4af37;
+  --gold-deep: #9a6a1e;
+  --gold-solid: #e8b923;
+
+  --maroon-deep: #3d0a10;
+  --maroon-core: #5c0f16;
+  --maroon-bright: #7a1219;
+  --black-red: #220509;
+
+  --background: var(--black-red);
+  --foreground: var(--gold-solid);
+}
+
+@theme inline {
+  --color-gold-start: var(--gold-start);
+  --color-gold-mid: var(--gold-mid);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-solid: var(--gold-solid);
+
+  --color-maroon-deep: var(--maroon-deep);
+  --color-maroon-core: var(--maroon-core);
+  --color-maroon-bright: var(--maroon-bright);
+  --color-black-red: var(--black-red);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-montserrat);
+  --font-sans: var(--font-montserrat);
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--black-red);
+  background-image: radial-gradient(
+    ellipse 140% 70% at 50% -10%,
+    var(--maroon-bright) 0%,
+    var(--maroon-core) 45%,
+    var(--black-red) 100%
+  );
+  background-attachment: fixed;
+  color: var(--gold-solid);
+}
+
+/* Embossed metal text: gradient fill + dark drop shadow, per design.json typography.textTreatment */
+.text-gold-foil {
+  background-image: linear-gradient(
+    180deg,
+    var(--gold-start) 0%,
+    var(--gold-mid) 55%,
+    var(--gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.45));
+}
+
+/* Faceted / chamfered corners in place of rounded corners, per design.json doNots */
+.chamfer-lg {
+  clip-path: polygon(
+    20px 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%,
+    0 20px
+  );
+}
+
+.chamfer-sm {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.chamfer-btn {
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}

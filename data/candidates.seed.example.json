@@ -1,0 +1,18 @@
+[
+  {
+    "sashNumber": 1,
+    "name": "Juan Dela Cruz",
+    "barangay": "Poblacion",
+    "bio": "Short bio text describing the candidate...",
+    "photoFile": "juan-dela-cruz.jpg",
+    "socialLinks": { "facebook": "https://facebook.com/...", "instagram": "" }
+  },
+  {
+    "sashNumber": 2,
+    "name": "Maria Santos",
+    "barangay": "San Isidro",
+    "bio": "Short bio text describing the candidate...",
+    "photoFile": "maria-santos.jpg",
+    "socialLinks": { "facebook": "", "instagram": "https://instagram.com/..." }
+  }
+]
