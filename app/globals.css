@@ -48,6 +48,13 @@ body {
 
 /* Embossed metal text: gradient fill + dark drop shadow, per design.json typography.textTreatment */
 .text-gold-foil {
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.45));
+}
+
+/* Also clip descendants (e.g. GSAP SplitText's unclassed word/char wrapper
+   divs) since background-image isn't inherited on its own. */
+.text-gold-foil,
+.text-gold-foil * {
   background-image: linear-gradient(
     180deg,
     var(--gold-start) 0%,
@@ -57,7 +64,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.45));
 }
 
 /* Faceted / chamfered corners in place of rounded corners, per design.json doNots */
@@ -78,4 +84,22 @@ body {
 
 .chamfer-btn {
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+
+/* Hover/active lift for real buttons & links (not decorative badge spans) */
+button.chamfer-btn,
+a.chamfer-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+button.chamfer-btn:hover:not(:disabled),
+a.chamfer-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+button.chamfer-btn:active:not(:disabled),
+a.chamfer-btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }

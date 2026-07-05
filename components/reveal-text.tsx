@@ -33,7 +33,7 @@ export function RevealText({
     if (!el) return;
 
     const split = SplitText.create(el, {
-      type,
+      type: type === "chars" ? "chars, words" : type,
       mask: type,
       autoSplit: true,
       onSplit(self) {

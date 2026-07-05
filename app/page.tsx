@@ -3,6 +3,7 @@ import { CandidateGrid } from "@/components/candidate-grid";
 import { RevealText } from "@/components/reveal-text";
 import { DividerLine } from "@/components/divider-line";
 import { PartnersSection } from "@/components/partners-section";
+import { HowToVote } from "@/components/how-to-vote";
 import { getActiveCandidates } from "@/lib/candidates";
 
 export default async function Home() {
@@ -35,6 +36,7 @@ export default async function Home() {
         )}
       </div>
 
+      <HowToVote />
       <PartnersSection />
     </>
   );

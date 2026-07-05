@@ -9,6 +9,7 @@ import {
   signInWithGoogle,
   signInWithFacebook,
   consumeRedirectResult,
+  getAuthErrorMessage,
 } from "@/lib/auth/client-session";
 
 type Props = {
@@ -81,7 +82,7 @@ export function VoteCta({
           formAction();
         }
       })
-      .catch((err) => toast.error(err instanceof Error ? err.message : String(err)));
+      .catch((err) => toast.error(getAuthErrorMessage(err)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -104,7 +105,7 @@ export function VoteCta({
         await (provider === "google" ? signInWithGoogle() : signInWithFacebook());
         setSignedIn(true);
       } catch (err) {
-        toast.error(err instanceof Error ? err.message : String(err));
+        toast.error(getAuthErrorMessage(err));
         setAuthPending(null);
         return;
       }
